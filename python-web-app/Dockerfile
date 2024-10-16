@@ -1,4 +1,4 @@
-FROM python:3.12.7-bullseye
+FROM python:3.12-slim-bullseye
 
 WORKDIR /usr/src/app
 
@@ -6,7 +6,11 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY flask-app.py .
+
+COPY static ./static
+
+COPY templates ./templates
 
 EXPOSE 5000
 
