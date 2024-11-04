@@ -8,13 +8,11 @@ RUN npm ci --only=production
 
 COPY . .
 
-
 FROM node:23-alpine AS app
 
 WORKDIR /usr/src/app
 
-COPY --from=build /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/myapp.js ./myapp.js
+COPY --from=build /usr/src/app ./
 
 EXPOSE 3000
 
